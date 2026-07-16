@@ -3,7 +3,8 @@ import Container from "../ui/Container";
 
 export default function Hero() {
   return (
-    <section className="py-24">
+    <section className="relative overflow-hidden py-24">
+      <div className="absolute inset-x-0 top-0 -z-10 h-[28rem] bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.16),_transparent_38%),radial-gradient(circle_at_top_right,_rgba(16,185,129,0.12),_transparent_32%)] dark:bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.2),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(14,165,233,0.14),_transparent_28%)]" />
 
       <Container>
 
@@ -11,11 +12,11 @@ export default function Hero() {
 
           <div>
 
-            <p className="text-blue-600 font-semibold mb-4">
+            <p className="mb-4 font-semibold text-blue-600">
               CRM SOFTWARE
             </p>
 
-            <h1 className="text-5xl font-bold leading-tight">
+            <h1 className="text-5xl font-bold leading-tight md:text-6xl">
 
               Grow Your Business
 
@@ -25,7 +26,7 @@ export default function Hero() {
 
             </h1>
 
-            <p className="text-gray-600 mt-6 text-lg">
+            <p className="mt-6 text-lg text-gray-600 dark:text-slate-300">
 
               Manage leads, automate workflows,
               track sales pipelines, and increase
@@ -33,7 +34,7 @@ export default function Hero() {
 
             </p>
 
-            <div className="flex gap-4 mt-8">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
 
               <Button>
 
@@ -42,7 +43,7 @@ export default function Hero() {
               </Button>
 
               <Button
-                className="bg-white text-blue-600 border border-blue-600 hover:bg-blue-50"
+                className="border border-blue-600 bg-white text-blue-600 hover:bg-blue-50 dark:bg-slate-950 dark:text-blue-300 dark:hover:bg-slate-900"
               >
                 Contact Sales
               </Button>
@@ -53,11 +54,11 @@ export default function Hero() {
 
           <div>
 
-            <div className="bg-white rounded-3xl shadow-xl p-8">
+            <div className="rounded-[2rem] border border-white/60 bg-white/85 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur dark:border-slate-800 dark:bg-slate-900/80 dark:shadow-[0_24px_80px_rgba(2,6,23,0.52)]">
 
               <div className="grid grid-cols-2 gap-6">
 
-                <div className="bg-blue-50 p-6 rounded-xl">
+                <div className="rounded-2xl bg-blue-50 p-6 dark:bg-blue-950/40">
 
                   <h2 className="text-3xl font-bold">
 
@@ -73,7 +74,7 @@ export default function Hero() {
 
                 </div>
 
-                <div className="bg-green-50 p-6 rounded-xl">
+                <div className="rounded-2xl bg-emerald-50 p-6 dark:bg-emerald-950/40">
 
                   <h2 className="text-3xl font-bold">
 
@@ -89,7 +90,7 @@ export default function Hero() {
 
                 </div>
 
-                <div className="bg-orange-50 p-6 rounded-xl">
+                <div className="rounded-2xl bg-amber-50 p-6 dark:bg-amber-950/40">
 
                   <h2 className="text-3xl font-bold">
 
@@ -105,7 +106,7 @@ export default function Hero() {
 
                 </div>
 
-                <div className="bg-purple-50 p-6 rounded-xl">
+                <div className="rounded-2xl bg-fuchsia-50 p-6 dark:bg-fuchsia-950/30">
 
                   <h2 className="text-3xl font-bold">
 

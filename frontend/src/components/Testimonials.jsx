@@ -25,7 +25,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 bg-slate-50">
+    <section
+      id="testimonials"
+      className="bg-slate-50 py-24 dark:bg-slate-950"
+    >
       <Container>
         <SectionTitle
           subtitle="Testimonials"

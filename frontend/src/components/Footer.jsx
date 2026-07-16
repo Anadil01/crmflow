@@ -9,7 +9,7 @@ import {
   
   export default function Footer() {
     return (
-      <footer className="bg-slate-900 text-gray-300">
+      <footer className="border-t border-slate-800 bg-slate-950 text-gray-300">
         <Container className="py-16">
   
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -43,7 +43,7 @@ import {
                 <li>
                   <a
                     href="#features"
-                    className="hover:text-white"
+                    className="transition hover:text-white"
                   >
                     Features
                   </a>
@@ -52,7 +52,7 @@ import {
                 <li>
                   <a
                     href="#pricing"
-                    className="hover:text-white"
+                    className="transition hover:text-white"
                   >
                     Pricing
                   </a>
@@ -61,7 +61,7 @@ import {
                 <li>
                   <a
                     href="#testimonials"
-                    className="hover:text-white"
+                    className="transition hover:text-white"
                   >
                     Testimonials
                   </a>
@@ -82,19 +82,19 @@ import {
               <ul className="space-y-3">
   
                 <li>
-                  <a href="#" className="hover:text-white">
+                  <a href="#" className="transition hover:text-white">
                     About
                   </a>
                 </li>
   
                 <li>
-                  <a href="#" className="hover:text-white">
+                  <a href="#" className="transition hover:text-white">
                     Careers
                   </a>
                 </li>
   
                 <li>
-                  <a href="#" className="hover:text-white">
+                  <a href="#" className="transition hover:text-white">
                     Contact
                   </a>
                 </li>
@@ -125,19 +125,19 @@ import {
   
               <div className="flex gap-5 mt-8 text-2xl">
   
-                <a href="#">
+                <a href="#" className="transition hover:text-white">
                   <FaFacebook />
                 </a>
-  
-                <a href="#">
+
+                <a href="#" className="transition hover:text-white">
                   <FaTwitter />
                 </a>
-  
-                <a href="#">
+
+                <a href="#" className="transition hover:text-white">
                   <FaLinkedin />
                 </a>
-  
-                <a href="#">
+
+                <a href="#" className="transition hover:text-white">
                   <FaGithub />
                 </a>
   

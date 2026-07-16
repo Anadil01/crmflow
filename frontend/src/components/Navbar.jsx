@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 import Button from "../ui/Button";
 import Container from "../ui/Container";
@@ -16,13 +17,16 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm">
+    <nav className="sticky top-0 z-50 bg-white/90 shadow-sm backdrop-blur dark:bg-slate-950/90 dark:shadow-slate-900/40">
       <Container className="flex items-center justify-between py-4">
-        <h1 className="text-2xl font-bold text-blue-600">
+        <Link
+          to="/"
+          className="text-2xl font-bold text-blue-600"
+        >
           CRMFlow
-        </h1>
+        </Link>
 
-        <ul className="hidden gap-8 font-medium md:flex">
+        <ul className="hidden gap-8 font-medium text-slate-700 dark:text-slate-200 md:flex">
           {navItems.map((item) => (
             <li key={item.href}>
               <a href={item.href}>{item.label}</a>
@@ -30,7 +34,14 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <Link
+            to="/dashboard"
+            className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:text-slate-200 dark:hover:border-blue-400 dark:hover:text-blue-300"
+          >
+            Dashboard
+          </Link>
+
           <Button onClick={() => (window.location.hash = "#contact")}>
             Book Demo
           </Button>
@@ -49,8 +60,8 @@ export default function Navbar() {
 
       {isOpen && (
         <Container className="pb-4 md:hidden">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <ul className="flex flex-col gap-4 font-medium">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <ul className="flex flex-col gap-4 font-medium text-slate-700 dark:text-slate-200">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <a
@@ -62,6 +73,14 @@ export default function Navbar() {
                 </li>
               ))}
             </ul>
+
+            <Link
+              to="/dashboard"
+              className="mt-4 block rounded-xl border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:text-slate-200 dark:hover:border-blue-400 dark:hover:text-blue-300"
+              onClick={() => setIsOpen(false)}
+            >
+              Open Dashboard
+            </Link>
 
             <Button
               className="mt-4 w-full"

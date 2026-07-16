@@ -6,14 +6,18 @@ export default function FeatureCard({
     return (
       <div
         className="
-        bg-white
         rounded-2xl
+        border
+        border-slate-200
+        bg-white
         p-8
         shadow-sm
-        hover:shadow-xl
         transition
         duration-300
-        border
+        hover:shadow-xl
+        dark:border-slate-800
+        dark:bg-slate-900
+        dark:hover:shadow-slate-950/40
         "
       >
         <div className="text-blue-600 text-4xl mb-6">
@@ -24,7 +28,7 @@ export default function FeatureCard({
           {title}
         </h3>
   
-        <p className="text-gray-600 leading-7">
+        <p className="text-gray-600 leading-7 dark:text-slate-300">
           {description}
         </p>
       </div>

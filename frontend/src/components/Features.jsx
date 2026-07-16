@@ -54,7 +54,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="py-24 bg-slate-50"
+      className="bg-slate-50 py-24 dark:bg-slate-950"
     >
       <Container>
 

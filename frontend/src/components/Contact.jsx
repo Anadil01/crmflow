@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 import { createInquiry } from "../services/inquiryApi";
 import Container from "../ui/Container";
@@ -8,11 +8,6 @@ import Input from "../ui/Input";
 import Button from "../ui/Button";
 
 export default function Contact() {
-  const [submitStatus, setSubmitStatus] = useState({
-    type: "",
-    message: "",
-  });
-
   const {
     register,
     handleSubmit,
@@ -32,33 +27,29 @@ export default function Contact() {
   });
 
   const onSubmit = async (data) => {
-    setSubmitStatus({
-      type: "",
-      message: "",
-    });
-
     try {
       await createInquiry(data);
-      setSubmitStatus({
-        type: "success",
-        message:
-          "Inquiry submitted successfully. Our team will reach out shortly.",
-      });
+      toast.success(
+        "Inquiry submitted successfully. Our team will reach out shortly."
+      );
       reset();
     } catch (err) {
-      setSubmitStatus({
-        type: "error",
-        message:
-          err.response?.data?.message ||
-          "Something went wrong while submitting your inquiry.",
-      });
+      const message =
+        err.code === "ERR_NETWORK"
+          ? "Could not reach the backend API. Make sure the server is running and that VITE_API_URL points to the correct address."
+          : err.response?.data?.message ||
+            "Something went wrong while submitting your inquiry.";
+
+      toast.error(
+        message
+      );
     }
   };
 
   return (
     <section
       id="contact"
-      className="bg-slate-50 py-24"
+      className="bg-slate-50 py-24 dark:bg-slate-950"
     >
       <Container>
         <SectionTitle
@@ -69,7 +60,7 @@ export default function Contact() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto max-w-5xl rounded-3xl bg-white p-8 shadow-lg"
+          className="mx-auto max-w-5xl rounded-3xl bg-white p-8 shadow-lg dark:bg-slate-900 dark:shadow-slate-950/40"
         >
           <div className="grid gap-6 md:grid-cols-2">
             <Input
@@ -130,7 +121,7 @@ export default function Contact() {
             />
 
             <div>
-              <label className="font-medium">
+              <label className="font-medium dark:text-slate-200">
                 Country
               </label>
 
@@ -141,7 +132,7 @@ export default function Contact() {
                 className={`mt-2 w-full rounded-xl border px-4 py-3 ${
                   errors.country
                     ? "border-red-500"
-                    : "border-gray-300"
+                    : "border-gray-300 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                 }`}
               >
                 <option value="">Select Country</option>
@@ -159,7 +150,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="font-medium">
+              <label className="font-medium dark:text-slate-200">
                 Industry
               </label>
 
@@ -170,7 +161,7 @@ export default function Contact() {
                 className={`mt-2 w-full rounded-xl border px-4 py-3 ${
                   errors.industry
                     ? "border-red-500"
-                    : "border-gray-300"
+                    : "border-gray-300 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                 }`}
               >
                 <option value="">Select Industry</option>
@@ -189,7 +180,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="font-medium">
+              <label className="font-medium dark:text-slate-200">
                 Company Size
               </label>
 
@@ -200,7 +191,7 @@ export default function Contact() {
                 className={`mt-2 w-full rounded-xl border px-4 py-3 ${
                   errors.companySize
                     ? "border-red-500"
-                    : "border-gray-300"
+                    : "border-gray-300 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                 }`}
               >
                 <option value="">Select Size</option>
@@ -219,7 +210,7 @@ export default function Contact() {
           </div>
 
           <div className="mt-6">
-            <label className="font-medium">
+            <label className="font-medium dark:text-slate-200">
               Message
             </label>
 
@@ -236,7 +227,7 @@ export default function Contact() {
               className={`mt-2 w-full rounded-xl border p-4 ${
                 errors.message
                   ? "border-red-500"
-                  : "border-gray-300"
+                  : "border-gray-300 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
               }`}
             />
 
@@ -246,18 +237,6 @@ export default function Contact() {
               </p>
             )}
           </div>
-
-          {submitStatus.message && (
-            <p
-              className={`mt-6 rounded-xl px-4 py-3 text-sm ${
-                submitStatus.type === "success"
-                  ? "bg-green-50 text-green-700"
-                  : "bg-red-50 text-red-700"
-              }`}
-            >
-              {submitStatus.message}
-            </p>
-          )}
 
           <Button
             className="mt-8 w-full disabled:cursor-not-allowed disabled:opacity-70"

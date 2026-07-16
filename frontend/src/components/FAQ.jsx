@@ -27,7 +27,10 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24">
+    <section
+      id="faq"
+      className="bg-slate-50/60 py-24 dark:bg-slate-900/30"
+    >
       <Container>
         <SectionTitle
           subtitle="FAQ"

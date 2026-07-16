@@ -10,13 +10,17 @@ export default function PricingCard({
     <div
       className={`
         rounded-3xl
+        border
+        border-slate-200
         bg-white
         p-8
         shadow-lg
-        border
+        dark:border-slate-800
+        dark:bg-slate-900
+        dark:shadow-slate-950/40
         ${
           popular
-            ? "border-blue-600 scale-105"
+            ? "border-blue-600 scale-105 dark:border-blue-400"
             : ""
         }
       `}
@@ -35,7 +39,7 @@ export default function PricingCard({
         {price}
       </h2>
 
-      <ul className="space-y-4 mt-8">
+      <ul className="mt-8 space-y-4 text-slate-700 dark:text-slate-300">
         {features.map((item) => (
           <li key={item}>✔ {item}</li>
         ))}

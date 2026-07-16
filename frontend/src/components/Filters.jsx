@@ -7,12 +7,12 @@ export default function Filters({
     onCountryChange,
 }) {
     return (
-        <div className="grid md:grid-cols-2 gap-4 mb-6">
+        <div className="mb-6 grid gap-4 md:grid-cols-2">
 
             <select
                 value={industry}
                 onChange={onIndustryChange}
-                className="border p-3 rounded-xl"
+                className="rounded-xl border border-slate-300 bg-white p-3 text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
             >
                 <option value="">All Industries</option>
 
@@ -27,7 +27,7 @@ export default function Filters({
             <select
                 value={country}
                 onChange={onCountryChange}
-                className="border p-3 rounded-xl"
+                className="rounded-xl border border-slate-300 bg-white p-3 text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
             >
                 <option value="">All Countries</option>
 

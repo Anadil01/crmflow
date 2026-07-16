@@ -11,18 +11,18 @@ export default function InquiryTable({
 
   if (!inquiries.length) {
     return (
-      <div className="rounded-xl bg-white p-8 text-center text-slate-500 shadow">
+      <div className="rounded-xl bg-white p-8 text-center text-slate-500 shadow dark:bg-slate-900 dark:text-slate-400 dark:shadow-slate-950/40">
         No inquiries match the current filters.
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-xl bg-white shadow">
+    <div className="overflow-hidden rounded-xl bg-white shadow dark:bg-slate-900 dark:shadow-slate-950/40">
       <div className="overflow-x-auto">
         <table className="min-w-full">
-          <thead className="bg-slate-200">
-            <tr className="text-left text-sm uppercase tracking-wide text-slate-700">
+          <thead className="bg-slate-200 dark:bg-slate-800">
+            <tr className="text-left text-sm uppercase tracking-wide text-slate-700 dark:text-slate-200">
               <th className="px-4 py-3">Name</th>
               <th className="px-4 py-3">Company</th>
               <th className="px-4 py-3">Email</th>
@@ -36,7 +36,7 @@ export default function InquiryTable({
             {inquiries.map((item) => (
               <tr
                 key={item._id}
-                className="border-b border-slate-100 text-sm"
+                className="border-b border-slate-100 text-sm dark:border-slate-800"
               >
                 <td className="px-4 py-3">{item.fullName}</td>
                 <td className="px-4 py-3">{item.companyName}</td>
@@ -47,7 +47,7 @@ export default function InquiryTable({
                   <button
                     type="button"
                     onClick={() => onDelete(item._id)}
-                    className="inline-flex rounded-lg p-2 text-red-500 transition hover:bg-red-50"
+                    className="inline-flex rounded-lg p-2 text-red-500 transition hover:bg-red-50 dark:hover:bg-red-950/40"
                     aria-label={`Delete inquiry from ${item.fullName}`}
                   >
                     <FaTrash />

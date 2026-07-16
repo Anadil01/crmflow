@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import {
   deleteInquiry,
@@ -24,16 +25,17 @@ export default function Admin() {
 
   const fetchInquiries = async () => {
     setLoading(true);
-    setError("");
 
     try {
       const res = await getInquiries();
       setInquiries(res.data.data);
+      setError("");
     } catch (err) {
-      setError(
+      const message =
         err.response?.data?.message ||
-          "Unable to load inquiries right now."
-      );
+        "Unable to load inquiries right now.";
+      setError(message);
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -46,16 +48,26 @@ export default function Admin() {
 
     setDeleteError("");
 
+    const deleteToastId = toast.loading(
+      "Deleting inquiry..."
+    );
+
     try {
       await deleteInquiry(id);
       setInquiries((current) =>
         current.filter((item) => item._id !== id)
       );
+      toast.success("Inquiry deleted successfully.", {
+        id: deleteToastId,
+      });
     } catch (err) {
-      setDeleteError(
+      const message =
         err.response?.data?.message ||
-          "Unable to delete this inquiry."
-      );
+        "Unable to delete this inquiry.";
+      setDeleteError(message);
+      toast.error(message, {
+        id: deleteToastId,
+      });
     }
   };
 
@@ -94,13 +106,13 @@ export default function Admin() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-100 p-4 md:p-8">
+    <div className="min-h-screen bg-slate-100 p-4 dark:bg-slate-950 md:p-8">
       <div className="mx-auto max-w-7xl">
         <h1 className="text-3xl font-bold md:text-4xl">
           CRMFlow Dashboard
         </h1>
 
-        <p className="mt-2 text-slate-600">
+        <p className="mt-2 text-slate-600 dark:text-slate-300">
           Review, search, and manage incoming sales inquiries.
         </p>
 
@@ -127,13 +139,13 @@ export default function Admin() {
         />
 
         {error && (
-          <div className="mb-6 rounded-xl bg-red-50 px-4 py-3 text-red-700">
+          <div className="mb-6 rounded-xl bg-red-50 px-4 py-3 text-red-700 dark:bg-red-950/40 dark:text-red-300">
             {error}
           </div>
         )}
 
         {deleteError && (
-          <div className="mb-6 rounded-xl bg-red-50 px-4 py-3 text-red-700">
+          <div className="mb-6 rounded-xl bg-red-50 px-4 py-3 text-red-700 dark:bg-red-950/40 dark:text-red-300">
             {deleteError}
           </div>
         )}

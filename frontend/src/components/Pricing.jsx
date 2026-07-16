@@ -4,7 +4,10 @@ import SectionTitle from "../ui/SectionTitle";
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24">
+    <section
+      id="pricing"
+      className="bg-[linear-gradient(180deg,transparent,rgba(148,163,184,0.08))] py-24 dark:bg-[linear-gradient(180deg,rgba(15,23,42,0),rgba(15,23,42,0.75))]"
+    >
       <Container>
 
         <SectionTitle
@@ -13,7 +16,7 @@ export default function Pricing() {
           description="Choose a plan that fits your business size."
         />
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid gap-8 lg:grid-cols-3">
 
           <PricingCard
             title="Starter"
